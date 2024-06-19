@@ -50,7 +50,7 @@ public class SecurityConfiguration{
     protected CorsConfigurationSource corsConfigurationSource() {
         final CorsConfiguration configuration = new CorsConfiguration();
 
-        configuration.setAllowedOrigins(Collections.singletonList("https://fdgfdgfdg.netlify.app"));
+        configuration.setAllowedOrigins(Collections.singletonList("*"));
         configuration.setAllowedMethods(Arrays.asList("HEAD", "GET", "POST", "PUT", "DELETE", "PATCH"));
 
         // NOTE: setAllowCredentials(true) is important,
