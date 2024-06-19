@@ -29,7 +29,7 @@ import reservaciones.proyecto.authz.service.UserService;
 
 
 
-@Tag(name = "Controlador User (Usua)", description = "Tabla users")
+@Tag(name = "Controlador Userio", description = "Tabla users")
 @RestController
 @CrossOrigin({"*"})
 @RequestMapping("/api/user")
@@ -40,7 +40,7 @@ public class UserController {
     @Autowired
     AuthorityService authorityService;
 
-    @Operation(summary = "Obtienfsdgsdfgsdfgdsfgdsfgsdfgsdfg")    
+    @Operation(summary = "Obtiene usuarios")    
     @PreAuthorize("hasAuthority('User_Read')")
     @GetMapping("/{id}/")
     public User findById(@PathVariable long id){
@@ -65,7 +65,6 @@ public class UserController {
     
 
     @Operation(summary = "Guarda un usuario (body), Requiere User_Write")
-    @PreAuthorize("hasAuthority('User_Write')")
     @PostMapping("/")
     public User save(@RequestBody User user){
         return userService.save(user);
