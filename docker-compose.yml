@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  app:
+    image: proyecto:1
+    build:
+      context: .
+    depends_on:
+      - db
+    environment:
+      - SPRING_PROFILES_ACTIVE=prod
+    ports:
+      - '8080:8080'
+    networks:
+      - desarrollo
+  db:
+    image:  postgres
+    environment:
+      - POSTGRES_DB=hotel
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+    ports:
+      - '54322:5432'
+    volumes:
+      - ./pg_hotel_data:/var/lib/postgresql
+    networks:
+      - desarrollo
+
+volumes:
+  pg_hotel_data:
+    external: true
+
+networks:
+  desarrollo:
+    driver: bridge
